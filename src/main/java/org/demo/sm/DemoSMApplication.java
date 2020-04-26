@@ -56,21 +56,16 @@ public class DemoSMApplication {
 			log.info("Number of entries: " + metrics.size());
 			
 			for (Metric m : metrics) {
-				log.info(m.toString());
-				log.info(m.getApplicationName());
+				log.info("saving record: " + m.toString());
+				repository.save(new Metric(m));
 			}
 			
-//			for (int i = 0; i < metrics.size(); i++) {
-//				log.info(metrics.get(i).toString());
-//	        }
+			log.info("All metrics from database:");
+			log.info("-------------------------------");
 			
-//			log.info("All metrics findAll():");
-//			log.info("-------------------------------");
-//			
-//			for (Metric m : repository.findAll()) {
-//				log.info(m.toString());
-//			}
-			
+			for (Metric m : repository.findAll()) {
+				log.info(m.toString());
+			}
 		};
 	}
 	

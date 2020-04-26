@@ -5,18 +5,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.opencsv.bean.CsvBindByName;
 
 @Entity
 public class Metric {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id	
+	@GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
 	
 	@CsvBindByName
-	public String applicationId;
+	private String applicationId;
 	@CsvBindByName
-	public String applicationPublicId;
+	private String applicationPublicId;
 	@CsvBindByName
 	private String applicationName;
 	@CsvBindByName
@@ -282,6 +285,91 @@ public class Metric {
 		this.openCountAtTimePeriodEndOtherModerate = openCountAtTimePeriodEndOtherModerate;
 		this.openCountAtTimePeriodEndOtherSevere = openCountAtTimePeriodEndOtherSevere;
 		this.openCountAtTimePeriodEndOtherCritical = openCountAtTimePeriodEndOtherCritical;
+	}
+
+	public Metric(Metric m) {
+		this.applicationId = m.getApplicationId();
+		this.applicationPublicId = m.getApplicationPublicId();
+		this.applicationName = m.getApplicationName();
+		this.organizationId = m.getOrganizationId();
+		this.organizationName = m.getOrganizationName();
+		
+		this.timePeriodStart = m.getTimePeriodStart();
+		
+		this.evaluationCount = m.getEvaluationCount();
+		
+//		this.mttrLowThreat = m.mttrLowThreat;
+//		this.mttrModerateThreat = m.mttrModerateThreat;
+//		this.mttrSevereThreat = m.mttrSevereThreat;
+//		this.mttrCriticalThreat = m.mttrCriticalThreat;
+//		
+//		this.discoveredCountSecurityLow = m.discoveredCountSecurityLow;
+//		this.discoveredCountSecurityModerate = m.discoveredCountSecurityModerate;
+//		this.discoveredCountSecuritySevere = m.discoveredCountSecuritySevere;
+//		this.discoveredCountSecurityCritical = m.discoveredCountSecurityCritical;
+//		this.discoveredCountLicenseLow = m.discoveredCountLicenseLow;
+//		this.discoveredCountLicenseModerate = m.discoveredCountLicenseModerate;
+//		this.discoveredCountLicenseSevere = m.discoveredCountLicenseSevere;
+//		this.discoveredCountLicenseCritical = m.discoveredCountLicenseCritical;
+//		this.discoveredCountQualityLow = m.discoveredCountQualityLow;
+//		this.discoveredCountQualityModerate = m.discoveredCountQualityModerate;
+//		this.discoveredCountQualitySevere = m.discoveredCountQualitySevere;
+//		this.discoveredCountQualityCritical = m.discoveredCountQualityCritical;
+//		this.discoveredCountOtherLow = m.discoveredCountOtherLow;
+//		this.discoveredCountOtherModerate = m.discoveredCountOtherModerate;
+//		this.discoveredCountOtherSevere = m.discoveredCountOtherSevere;
+//		this.discoveredCountOtherCritical = m.discoveredCountOtherCritical;
+//		
+//		this.fixedCountSecurityLow = m.fixedCountSecurityLow;
+//		this.fixedCountSecurityModerate = m.fixedCountSecurityModerate;
+//		this.fixedCountSecuritySevere = m.fixedCountSecuritySevere;
+//		this.fixedCountSecurityCritical = m.fixedCountSecurityCritical;
+//		this.fixedCountLicenseLow = m.fixedCountLicenseLow;
+//		this.fixedCountLicenseModerate = m.fixedCountLicenseModerate;
+//		this.fixedCountLicenseSevere = m.fixedCountLicenseSevere;
+//		this.fixedCountLicenseCritical = m.fixedCountLicenseCritical;
+//		this.fixedCountQualityLow = m.fixedCountQualityLow;
+//		this.fixedCountQualityModerate = m.fixedCountQualityModerate;
+//		this.fixedCountQualitySevere = m.fixedCountQualitySevere;
+//		this.fixedCountQualityCritical = m.fixedCountQualityCritical;
+//		this.fixedCountOtherLow = m.fixedCountOtherLow;
+//		this.fixedCountOtherModerate = m.fixedCountOtherModerate;
+//		this.fixedCountOtherSevere = m.fixedCountOtherSevere;
+//		this.fixedCountOtherCritical = m.fixedCountOtherCritical;
+//		
+//		this.waivedCountSecurityLow = m.waivedCountSecurityLow;
+//		this.waivedCountSecurityModerate = m.waivedCountSecurityModerate;
+//		this.waivedCountSecuritySevere = m.waivedCountSecuritySevere;
+//		this.waivedCountSecurityCritical = m.waivedCountSecurityCritical;
+//		this.waivedCountLicenseLow = m.waivedCountLicenseLow;
+//		this.waivedCountLicenseModerate = m.waivedCountLicenseModerate;
+//		this.waivedCountLicenseSevere = m.waivedCountLicenseSevere;
+//		this.waivedCountLicenseCritical = m.waivedCountLicenseCritical;
+//		this.waivedCountQualityLow = m.waivedCountQualityLow;
+//		this.waivedCountQualityModerate = m.waivedCountQualityModerate;
+//		this.waivedCountQualitySevere = m.waivedCountQualitySevere;
+//		this.waivedCountQualityCritical = m.waivedCountQualityCritical;
+//		this.waivedCountOtherLow = m.waivedCountOtherLow;
+//		this.waivedCountOtherModerate = m.waivedCountOtherModerate;
+//		this.waivedCountOtherSevere = m.waivedCountOtherSevere;
+//		this.waivedCountOtherCritical = m.waivedCountOtherCritical;
+//		
+//		this.openCountAtTimePeriodEndSecurityLow = m.openCountAtTimePeriodEndSecurityLow;
+//		this.openCountAtTimePeriodEndSecurityModerate = m.openCountAtTimePeriodEndSecurityModerate;
+//		this.openCountAtTimePeriodEndSecuritySevere = m.openCountAtTimePeriodEndSecuritySevere;
+//		this.openCountAtTimePeriodEndSecurityCritical = m.openCountAtTimePeriodEndSecurityCritical;
+//		this.openCountAtTimePeriodEndLicenseLow = m.openCountAtTimePeriodEndLicenseLow;
+//		this.openCountAtTimePeriodEndLicenseModerate = m.openCountAtTimePeriodEndLicenseModerate;
+//		this.openCountAtTimePeriodEndLicenseSevere = m.openCountAtTimePeriodEndLicenseSevere;
+//		this.openCountAtTimePeriodEndLicenseCritical = m.openCountAtTimePeriodEndLicenseCritical;
+//		this.openCountAtTimePeriodEndQualityLow = m.openCountAtTimePeriodEndQualityLow;
+//		this.openCountAtTimePeriodEndQualityModerate = m.openCountAtTimePeriodEndQualityModerate;
+//		this.openCountAtTimePeriodEndQualitySevere = m.openCountAtTimePeriodEndQualitySevere;
+//		this.openCountAtTimePeriodEndQualityCritical = m.openCountAtTimePeriodEndQualityCritical;
+//		this.openCountAtTimePeriodEndOtherLow = m.openCountAtTimePeriodEndOtherLow;
+//		this.openCountAtTimePeriodEndOtherModerate = m.openCountAtTimePeriodEndOtherModerate;
+//		this.openCountAtTimePeriodEndOtherSevere = m.openCountAtTimePeriodEndOtherSevere;
+//		this.openCountAtTimePeriodEndOtherCritical = m.openCountAtTimePeriodEndOtherCritical;
 	}
 
 	@Override
