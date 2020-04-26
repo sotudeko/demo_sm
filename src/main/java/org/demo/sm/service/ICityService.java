@@ -9,5 +9,5 @@ public interface ICityService {
 	
 	List<City> findAll();
     City findById(Long id);
-
+    
 }
